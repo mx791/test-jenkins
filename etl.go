@@ -32,13 +32,12 @@ func LoadRow(datas []string) {
 }
 
 func LoadFile() {
-	fmt.Println("loading datas")
 	csvFile, err := os.Open(path)
 
 	if err != nil {
 		fmt.Println(err)
 	}
-	fmt.Println("Successfully Opened CSV file")
+
 	defer csvFile.Close()
     
 	csvr := csv.NewReader(csvFile)
@@ -76,16 +75,10 @@ func Load() {
 		sb.WriteString("<tr><td>" + key + "</td><td></td><td>" + fmt.Sprintf("%f", value / statsCount[key]) + "</td></tr>")
 	}
 	sb.WriteString("</table>")
-
-	f, _ := os.Create("./datas/data.html")
-    defer f.Close()
-
-    f.WriteString(sb.String())
+    fmt.Println(sb.String())
 }
 
 func Download() {
-
-	fmt.Println("downloading datas")
 
 	resp, err := http.Get(url)
 	if err != nil {
@@ -106,7 +99,6 @@ func Download() {
 func main() {
 	Download()
 	LoadFile()
-	fmt.Println(len(dataset))
 	Transform()
 	Load()
 }
