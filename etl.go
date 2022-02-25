@@ -80,7 +80,7 @@ func Load() {
 	f, _ := os.Create("./datas/data.txt")
     defer f.Close()
 
-    _, err2 := f.WriteString(sb.String())
+    f.WriteString(sb.String())
 }
 
 func Download() {
