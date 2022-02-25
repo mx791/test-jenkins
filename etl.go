@@ -73,7 +73,7 @@ func Load() {
 	var sb strings.StringBuilder
 	sb.WriteString("<table><tr><td>Nom du departement</td><td>Numéro de mois</td><td>Températue moyenne</td></tr>")
 	for key, value := range stats {
-		sb.WriteString("<tr><td>" + key + "</td><td></td><td>" + value / statsCount[key] "</td></tr>")
+		sb.WriteString("<tr><td>" + key + "</td><td></td><td>" + value / statsCount[key] + "</td></tr>")
 	}
 	sb.WriteString("</table>")
 
