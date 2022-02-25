@@ -77,7 +77,7 @@ func Load() {
 	}
 	sb.WriteString("</table>")
 
-	f, _ := os.Create("./datas/data.txt")
+	f, _ := os.Create("./datas/data.html")
     defer f.Close()
 
     f.WriteString(sb.String())

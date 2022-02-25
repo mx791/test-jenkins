@@ -10,7 +10,7 @@ pipeline {
         stage("run") {
             steps {
                 sh "echo 'je lance le process'"
-                sh "docker run -v ./datas://usr/src/app/datas etl-${env.BUILD_ID}"
+                sh "docker run -v ${env.WORKSPACE}/datas:/usr/src/app/datas etl-${env.BUILD_ID}"
             }
             post {
                 always {
@@ -18,7 +18,7 @@ pipeline {
                         alwaysLinkToLastBuild: true,
                         keepAll: true,
                         reportDir: 'datas',
-                        reportFiles: 'datas.html',
+                        reportFiles: 'data.html',
                         reportName: 'My Reports',
                         reportTitles: 'The Report'] 
                     )
