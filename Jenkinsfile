@@ -10,6 +10,7 @@ pipeline {
         stage("run") {
             steps {
                 sh "echo 'je lance le process'"
+                sh "mkdir datas || true"
                 sh "docker run -v ${env.WORKSPACE}/datas:/usr/src/app/datas etl-${env.BUILD_ID}"
             }
             post {
@@ -23,7 +24,6 @@ pipeline {
                         reportTitles: 'The Report'] 
                     )
                 }
-
             }
         }
     }
