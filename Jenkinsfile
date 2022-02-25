@@ -12,15 +12,19 @@ pipeline {
                 sh "echo 'je lance le process'"
                 sh "docker run -v ./datas://usr/src/app/datas etl-${env.BUILD_ID}"
             }
+            post {
+                always {
+                    publishHTML (target : [allowMissing: false,
+                        alwaysLinkToLastBuild: true,
+                        keepAll: true,
+                        reportDir: 'reports',
+                        reportFiles: 'datas/datas.html',
+                        reportName: 'My Reports',
+                        reportTitles: 'The Report']
+                    )
+                }
 
-            publishHTML (target : [allowMissing: false,
-                alwaysLinkToLastBuild: true,
-                keepAll: true,
-                reportDir: 'reports',
-                reportFiles: 'myreport.html',
-                reportName: 'My Reports',
-                reportTitles: 'The Report']
-            )
+            }
         }
     }
 }
