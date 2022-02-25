@@ -70,7 +70,7 @@ func Transform() {
 }
 
 func Load() {
-	var sb strings.StringBuilder
+	var sb strings.Builder
 	sb.WriteString("<table><tr><td>Nom du departement</td><td>Numéro de mois</td><td>Températue moyenne</td></tr>")
 	for key, value := range stats {
 		sb.WriteString("<tr><td>" + key + "</td><td></td><td>" + fmt.Sprintf("%f", value / statsCount[key]) + "</td></tr>")
