@@ -77,11 +77,7 @@ func Load() {
 	}
 	sb.WriteString("</table>")
 
-	f, err := os.Create("./datas/data.txt")
-	if err != nil {
-        log.Fatal(err)
-    }
-
+	f, _ := os.Create("./datas/data.txt")
     defer f.Close()
 
     _, err2 := f.WriteString(sb.String())

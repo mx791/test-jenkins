@@ -17,10 +17,10 @@ pipeline {
                     publishHTML (target : [allowMissing: false,
                         alwaysLinkToLastBuild: true,
                         keepAll: true,
-                        reportDir: 'reports',
-                        reportFiles: 'datas/datas.html',
+                        reportDir: 'datas',
+                        reportFiles: 'datas.html',
                         reportName: 'My Reports',
-                        reportTitles: 'The Report']
+                        reportTitles: 'The Report'] 
                     )
                 }
 
