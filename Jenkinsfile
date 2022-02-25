@@ -11,8 +11,7 @@ pipeline {
             steps {
                 sh "echo 'je lance le process'"
                 sh "mkdir datas || true"
-                sh "docker run -v ${env.WORKSPACE}/datas:/usr/src/app/datas etl-${env.BUILD_ID}"
-                sh "cd datas && ls -la"
+                sh "docker run etl-${env.BUILD_ID} > datas/data.html"
             }
             post {
                 always {
