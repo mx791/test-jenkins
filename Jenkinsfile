@@ -10,8 +10,17 @@ pipeline {
         stage("run") {
             steps {
                 sh "echo 'je lance le process'"
-                sh "docker run etl-${env.BUILD_ID} >> report.txt"
+                sh "docker run -v ./datas://usr/src/app/datas etl-${env.BUILD_ID}"
             }
+
+            publishHTML (target : [allowMissing: false,
+                alwaysLinkToLastBuild: true,
+                keepAll: true,
+                reportDir: 'reports',
+                reportFiles: 'myreport.html',
+                reportName: 'My Reports',
+                reportTitles: 'The Report']
+            )
         }
     }
 }

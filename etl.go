@@ -7,6 +7,7 @@ import (
 	"strconv"
 	"net/http"
 	"io"
+	"strings"
 
 )
 
@@ -69,9 +70,21 @@ func Transform() {
 }
 
 func Load() {
+	var sb strings.StringBuilder
+	sb.WriteString("<table><tr><td>Nom du departement</td><td>Numéro de mois</td><td>Températue moyenne</td></tr>")
 	for key, value := range stats {
-		fmt.Println(key, value / statsCount[key])
+		sb.WriteString("<tr><td>" + key + "</td><td></td><td>" + value / statsCount[key] "</td></tr>")
 	}
+	sb.WriteString("</table>")
+
+	f, err := os.Create("./datas/data.txt")
+	if err != nil {
+        log.Fatal(err)
+    }
+
+    defer f.Close()
+
+    _, err2 := f.WriteString(sb.String())
 }
 
 func Download() {
@@ -92,6 +105,7 @@ func Download() {
 
 	_, err = io.Copy(out, resp.Body)
 }
+
 
 func main() {
 	Download()
