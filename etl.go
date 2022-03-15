@@ -71,13 +71,13 @@ func Transform() {
 func Load() {
 	var sb strings.Builder
 	sb.WriteString("<table><tr><td>Nom du departement</td><td>Mois</td><td>Températue moyenne</td></tr>")
-	mois := strings.Split(key, ":")[1]
-	avgTemp := fmt.Sprintf("%f", value / statsCount[key])
 	for key, value := range stats {
+		mois := strings.Split(key, ":")[1]
+		avgTemp := fmt.Sprintf("%f", value / statsCount[key])
 		sb.WriteString("<tr><td>" + strings.Split(key, ":")[0] + "</td><td>" + mois + "</td><td>" + avgTemp + "</td></tr>")
 	}
 	sb.WriteString("</table>")
-    fmt.Println(sb.String())
+    fmt.Println(sb.String())	
 }
 
 func Download() {
