@@ -8,7 +8,6 @@ pipeline {
             }
         }
         stage("run") {
-            when { branch 'main' }
             steps {
                 sh "echo 'je lance le process'"
                 sh "mkdir datas || true"
