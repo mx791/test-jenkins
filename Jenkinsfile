@@ -23,6 +23,10 @@ pipeline {
                         reportName: 'My Reports',
                         reportTitles: 'The Report'] 
                     )
+                    emailext body: 'A Test EMail', recipientProviders: [[
+                        $class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider'
+                        ]], subject: 'Test'
+                    }
                 }
             }
         }
