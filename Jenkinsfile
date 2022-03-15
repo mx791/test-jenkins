@@ -27,12 +27,14 @@ pipeline {
             }
         }
         stage("Envoie du rapport") {
-            emailext (
-                subject: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
-                body: """Bon bah ça a fonctionné""",
-                recipientProviders: [[$class: 'DevelopersRecipientProvider']],
-                to: "charles.laurioz@gmail.com"
-            )
+            steps {
+                emailext (
+                    subject: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+                    body: """Bon bah ça a fonctionné""",
+                    recipientProviders: [[$class: 'DevelopersRecipientProvider']],
+                    to: "charles.laurioz@gmail.com"
+                )
+            }
         }
     }
 }
