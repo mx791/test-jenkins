@@ -10,7 +10,7 @@ pipeline {
         stage("run") {
             steps {
                 sh "echo 'je lance le process'"
-                sh "mkdir datas || true"
+                sh "mkdir -p datas"
                 sh "docker run etl-${env.BUILD_ID} > datas/data.html"
             }
             post {
