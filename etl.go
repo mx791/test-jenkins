@@ -57,7 +57,7 @@ var statsCount = make(map[string]float64)
 
 func Transform() {
 	for _, obj := range dataset {
-		key := obj.Name + ":" + []string{"0","1","2","3","4","5","6","7","8","9","10","11","12"}[obj.Month]
+		key := obj.Name + ":" + []string{"Janvier","Fevrier","Mars","Avril","Mai","Juin","Juillet","Aout","Septembre","Octobre","Novembre","Decembre","12"}[obj.Month]
 		val, exist := stats[key]
 		if !exist {
 			stats[key] = 0.0
@@ -70,17 +70,17 @@ func Transform() {
 
 func Load() {
 	var sb strings.Builder
-	sb.WriteString("<table><tr><td>Nom du departement</td><td>Numéro de mois</td><td>Températue moyenne</td></tr>")
+	sb.WriteString("<table><tr><td>Nom du departement</td><td>Mois</td><td>Températue moyenne</td></tr>")
+	mois := strings.Split(key, ":")[1]
+	avgTemp := fmt.Sprintf("%f", value / statsCount[key])
 	for key, value := range stats {
-		sb.WriteString("<tr><td>" + strings.Split(key, ":")[0] + "</td><td>" + strings.Split(key, ":")[1] + "</td><td>" + fmt.Sprintf("%f", value / statsCount[key]) + "</td></tr>")
+		sb.WriteString("<tr><td>" + strings.Split(key, ":")[0] + "</td><td>" + mois + "</td><td>" + avgTemp + "</td></tr>")
 	}
 	sb.WriteString("</table>")
     fmt.Println(sb.String())
 }
 
 func Download() {
-
-	fmt.Println("downloading...")
 	resp, err := http.Get(url)
 	if err != nil {
 		return
