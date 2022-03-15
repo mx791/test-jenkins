@@ -57,7 +57,7 @@ var statsCount = make(map[string]float64)
 
 func Transform() {
 	for _, obj := range dataset {
-		key := obj.Name + ":" + []string{"0","Janvier","Fevrier","Mars","Avril","Mai","Juin","Juillet","Aout","Septembre","Octobre","Novembre","Decembre"}[obj.Month]
+		key := obj.Name + ":" + []string{"Janvier","Fevrier","Mars","Avril","Mai","Juin","Juillet","Aout","Septembre","Octobre","Novembre","Decembre"}[obj.Month-1]
 		val, exist := stats[key]
 		if !exist {
 			stats[key] = 0.0
@@ -70,7 +70,7 @@ func Transform() {
 
 func Load() {
 	var sb strings.Builder
-	sb.WriteString("<table class='table'><tr><td>Nom du departement</td><td>Mois</td><td>Températue moyenne</td></tr>")
+	sb.WriteString("<table style='width: 100%'><tr><td>Nom du departement</td><td>Mois</td><td>Températue moyenne</td></tr>")
 	for key, value := range stats {
 		mois := strings.Split(key, ":")[1]
 		avgTemp := fmt.Sprintf("%f", value / statsCount[key])
