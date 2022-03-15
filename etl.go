@@ -70,7 +70,7 @@ func Transform() {
 
 func Load() {
 	var sb strings.Builder
-	sb.WriteString("<table><tr><td>Nom du departement</td><td>Mois</td><td>Températue moyenne</td></tr>")
+	sb.WriteString("<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css' /><table class='table'><tr><td>Nom du departement</td><td>Mois</td><td>Températue moyenne</td></tr>")
 	for key, value := range stats {
 		mois := strings.Split(key, ":")[1]
 		avgTemp := fmt.Sprintf("%f", value / statsCount[key])

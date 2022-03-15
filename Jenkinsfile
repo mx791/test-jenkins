@@ -20,7 +20,7 @@ pipeline {
                         keepAll: true,
                         reportDir: 'datas',
                         reportFiles: 'data.html',
-                        reportName: 'My Reports',
+                        reportName: 'Weather Report',
                         reportTitles: 'The Report'] 
                     )
                 }
@@ -31,8 +31,8 @@ pipeline {
                 emailext (
                     subject: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
                     body: """Bon bah ça a fonctionné""",
-                    recipientProviders: [[$class: 'DevelopersRecipientProvider']],
-                    to: "charles.laurioz@gmail.com"
+                    to: "charles.laurioz@gmail.com",
+                    recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']]
                 )
             }
         }
