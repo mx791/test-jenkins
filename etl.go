@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"io"
 	"strings"
+	"math"
 
 )
 
@@ -70,10 +71,10 @@ func Transform() {
 
 func Load() {
 	var sb strings.Builder
-	sb.WriteString("<table style='width: 100%'><tr><td>Nom du departement</td><td>Mois</td><td>Températue moyenne</td></tr>")
+	sb.WriteString("<table style='width: 100%'><tr><td><b>Nom du departement</b></td><td><b>Mois</b></td><td><b>Températue moyenne</b></td></tr>")
 	for key, value := range stats {
 		mois := strings.Split(key, ":")[1]
-		avgTemp := fmt.Sprintf("%f", value / statsCount[key])
+		avgTemp := fmt.Sprintf("%f", math.floor(value / statsCount[key]*100) / 100.0)
 		sb.WriteString("<tr><td>" + strings.Split(key, ":")[0] + "</td><td>" + mois + "</td><td>" + avgTemp + "</td></tr>")
 	}
 	sb.WriteString("</table>")
