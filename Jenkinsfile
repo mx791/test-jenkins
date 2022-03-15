@@ -31,8 +31,10 @@ pipeline {
             steps {
                 emailext (
                     subject: "JENKINS : résultat du build ${env.JOB_NAME} - ${env.BUILD_NUMBER}",
-                    body: "Bon bah ça a fonctionné",
-                    to: "charles.laurioz@gmail.com"
+                    body: '${FILE,path="datas/data.html"}',
+                    // body: "Bon bah ça a fonctionné",
+                    to: "charles.laurioz@gmail.com",
+                    mimeType: 'text/html'
                 )
             }
         }
