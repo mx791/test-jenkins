@@ -30,8 +30,8 @@ pipeline {
         stage("Envoie du rapport") {
             steps {
                 emailext (
-                    subject: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
-                    body: """Bon bah ça a fonctionné""",
+                    subject: "JENKINS : résultat du build ${env.JOB_NAME} - ${env.BUILD_NUMBER}",
+                    body: "Bon bah ça a fonctionné",
                     to: "charles.laurioz@gmail.com"
                 )
             }
