@@ -80,6 +80,7 @@ func Load() {
 
 func Download() {
 
+	fmt.Println("downloading...")
 	resp, err := http.Get(url)
 	if err != nil {
 		return
