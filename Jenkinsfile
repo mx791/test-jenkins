@@ -1,13 +1,13 @@
 pipeline {
     agent any
     stages {
-        stage("build") {
+        stage("Build de l'image") {
             steps {
                 sh "echo 'je build ton image'"
                 sh "docker build --rm -t etl-${env.BUILD_ID} ."
             }
         }
-        stage("run") {
+        stage("Lancement du job") {
             steps {
                 sh "echo 'je lance le process'"
                 sh "mkdir -p datas"

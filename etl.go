@@ -57,7 +57,7 @@ var statsCount = make(map[string]float64)
 
 func Transform() {
 	for _, obj := range dataset {
-		key := obj.Name + ":" + []string{"Janvier","Fevrier","Mars","Avril","Mai","Juin","Juillet","Aout","Septembre","Octobre","Novembre","Decembre","12"}[obj.Month]
+		key := obj.Name + ":" + []string{"0","Janvier","Fevrier","Mars","Avril","Mai","Juin","Juillet","Aout","Septembre","Octobre","Novembre","Decembre"}[obj.Month]
 		val, exist := stats[key]
 		if !exist {
 			stats[key] = 0.0
