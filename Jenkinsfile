@@ -32,8 +32,7 @@ pipeline {
                 emailext (
                     subject: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
                     body: """Bon bah ça a fonctionné""",
-                    to: "charles.laurioz@gmail.com",
-                    recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']]
+                    to: "charles.laurioz@gmail.com"
                 )
             }
         }
