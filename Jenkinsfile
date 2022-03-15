@@ -23,10 +23,11 @@ pipeline {
                         reportName: 'My Reports',
                         reportTitles: 'The Report'] 
                     )
-                    emailext body: 'A Test EMail', recipientProviders: [[
-                        $class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider'
-                        ]], subject: 'Test'
-                    }
+                    emailext (
+                        subject: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+                        body: """Bon bah ça a fonctionné""",
+                        recipientProviders: [[$class: 'DevelopersRecipientProvider']]
+                    )
                 }
             }
         }
