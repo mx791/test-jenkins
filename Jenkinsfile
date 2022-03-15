@@ -4,7 +4,7 @@ pipeline {
         stage("build") {
             steps {
                 sh "echo 'je build ton image'"
-                sh "docker build -t etl-${env.BUILD_ID} ."
+                sh "docker build --rm -t etl-${env.BUILD_ID} ."
             }
         }
         stage("run") {
