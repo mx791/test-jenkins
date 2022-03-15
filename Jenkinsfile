@@ -23,6 +23,7 @@ pipeline {
                         reportName: 'Weather Report',
                         reportTitles: 'The Report'] 
                     )
+                    sh "docker image rm --force etl-${env.BUILD_ID}"
                 }
             }
         }
